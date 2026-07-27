@@ -1,0 +1,9 @@
+apiVersion: v2
+name: api
+description: Helm chart for the bjcf-devops-portfolio sample API
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+maintainers:
+  - name: bjcf
+    url: https://github.com/bjcf
