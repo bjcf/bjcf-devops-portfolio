@@ -41,12 +41,13 @@ jobs:
           push: false
           load: true
           tags: bjcf-devops-portfolio:ci
+      - name: Install Trivy
+        run: |
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh \
+            | sh -s -- -b /usr/local/bin
       - name: Scan image for vulnerabilities (Trivy)
-        uses: aquasecurity/trivy-action@v0.30.0
-        with:
-          image-ref: bjcf-devops-portfolio:ci
-          severity: HIGH,CRITICAL
-          exit-code: "0"     # report only; flip to "1" to fail the build
+        # report only; add `--exit-code 1` to fail the build on findings
+        run: trivy image --severity HIGH,CRITICAL --no-progress bjcf-devops-portfolio:ci
 
   helm:
     name: Helm · lint & template
