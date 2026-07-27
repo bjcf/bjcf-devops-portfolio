@@ -42,7 +42,7 @@ jobs:
           load: true
           tags: bjcf-devops-portfolio:ci
       - name: Scan image for vulnerabilities (Trivy)
-        uses: aquasecurity/trivy-action@0.24.0
+        uses: aquasecurity/trivy-action@v0.30.0
         with:
           image-ref: bjcf-devops-portfolio:ci
           severity: HIGH,CRITICAL
